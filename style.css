@@ -128,145 +128,135 @@ body {
 
 
 
-/* === START: NEW Frosted Glass Redesign (Scoped to Main App) === */
+/* === START: NEW Frosted Glass Redesign (V3 - Clear BG) === */
 
 /* 1. ផ្ទៃខាងក្រោយ (Background Image) - អនុវត្តតែលើ #main-app-container */
+/* (Requirement 1 & 3: រូបភាពច្បាស់) */
 
-/* លុបផ្ទៃខាងក្រោយពណ៌ស ចេញពី Main App */
 #main-app-container {
     position: relative;
     background: transparent !important; 
-    overflow: hidden; /* ធានាថា ::before មិនហៀរចេញ */
+    overflow: hidden; 
 }
 
-/* បង្កើត pseudo-element សម្រាប់ផ្ទុក background */
 #main-app-container::before {
     content: "";
     position: absolute;
     inset: 0;
-    z-index: -1; /* ដាក់វានៅខាងក្រោយគេបង្អស់ */
+    z-index: -1; 
     
-    /* រូបភាពផ្ទៃខាងក្រោយ (Requirement 1) */
-    background-image: url('https://i.postimg.cc/YCQVKMQs/Artboard-1.png');
+    /* រូបភាពផ្ទៃខាងក្រោយ (ច្បាស់ មិនព្រិល មិនងងឹត) */
+    background-image: url('https://i.postimg.cc/FRwXZGjn/Artboard-1.png');
     background-size: cover;
     background-position: center;
     background-attachment: fixed; /* ធ្វើឲ្យ BG នៅស្ងៀមពេល scroll */
-
-    /* ធ្វើឲ្យងងឹត និង ព្រិល (Requirement 3) */
-    filter: blur(4px); /* ព្រិល 4px */
-    background-color: rgba(0, 0, 0, 0.3); /* ស្រទាប់ខ្មៅ 30% */
     
-    transform: scale(1.05); /* ពង្រីកបន្តិច ដើម្បីកុំឲ្យឃើញគែមព្រិល */
+    /* V3: បានលុប filter: blur() និង background-color: dark ចេញ */
 }
 
-/* 2. ធ្វើឲ្យអក្សរងាយស្រួលអាន (Text Stroke/Shadow) (Requirement 4) */
-/* អនុវត្តតែលើ Main App */
+/* 2. ធ្វើឲ្យអក្សរងាយស្រួលអាន (Heavy Stoke) (Requirement 3) */
+/* អនុវត្ត "Stoke" ធ្ងន់ៗ ទៅលើអក្សរទាំងអស់ នៅក្នុង Main App */
 #main-app-container {
-    /* បន្ថែមស្រមោល (shadow) ស្រាលៗ ទៅគ្រប់អក្សរ */
-    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.6);
+    text-shadow: 
+        -1px -1px 3px rgba(0,0,0,0.8), 
+         1px -1px 3px rgba(0,0,0,0.8), 
+        -1px  1px 3px rgba(0,0,0,0.8), 
+         1px  1px 3px rgba(0,0,0,0.8),
+         0 0 5px rgba(0,0,0,0.5); /* ធ្វើឲ្យវា nổi ជាងមុន */
 }
 
 /* 3. ប្រអប់កញ្ចក់ថ្លា (Frosted Glass Effect) (Requirement 2) */
-/* សម្គាល់៖ រាល់ Selector ឥឡូវនេះ ត្រូវបានដាក់ក្នុង #main-app-container */
+/* យើងប្តូរទៅជា "កញ្ចក់ពណ៌ខ្មៅ" ថ្លា (Dark Glass) ព្រោះវាស្អាតជាង ពេលផ្ទៃខាងក្រោយច្បាស់ */
 
 /* --- Home Page --- */
 #main-app-container #page-home button.bg-blue-50,
 #main-app-container #page-home button.bg-green-50,
-#main-app-container #page-home button.bg-red-50 {
-    background-color: rgba(255, 255, 255, 0.1) !important;
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
+#main-app-container #page-home button.bg-red-50,
+#main-app-container #page-home .bg-white { /* ប្រអប់ "អ្នកអនុញ្ញាត" */
+    background-color: rgba(0, 0, 0, 0.2) !important; /* កញ្ចក់ខ្មៅ 20% */
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
     border: 1px solid rgba(255, 255, 255, 0.15) !important;
     transition: background-color 0.2s ease;
 }
-#main-app-container #page-home .bg-white { 
-    background-color: rgba(255, 255, 255, 0.1) !important;
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.15) !important;
-}
 
-/* Hover states សម្រាប់ប៊ូតុងកញ្ចក់ */
+/* Hover states */
 #main-app-container #page-home button.bg-blue-50:hover,
 #main-app-container #page-home button.bg-green-50:hover,
 #main-app-container #page-home button.bg-red-50:hover {
-    background-color: rgba(255, 255, 255, 0.25) !important;
+    background-color: rgba(0, 0, 0, 0.35) !important;
 }
 
 /* --- Account & Help Page --- */
 #main-app-container #page-account .bg-white,
-#main-app-container #page-help .bg-white {
-    background-color: rgba(255, 255, 255, 0.15) !important;
+#main-app-container #page-help .bg-white,
+#main-app-container #page-help .bg-gray-50 {
+    background-color: rgba(0, 0, 0, 0.2) !important;
     backdrop-filter: blur(15px);
     -webkit-backdrop-filter: blur(15px);
-    border: 1px solid rgba(255, 255, 255, 0.2) !important;
-}
-#main-app-container #page-help .bg-gray-50 { /* Link ទំនាក់ទំនង */
-     background-color: rgba(255, 255, 255, 0.1) !important;
-     border: 1px solid rgba(255, 255, 255, 0.15) !important;
+    border: 1px solid rgba(255, 255, 255, 0.15) !important;
 }
 
 /* --- History Page --- */
 #main-app-container #page-history {
-    background-color: transparent !important; /* Override bg-gray-50 */
+    background-color: transparent !important; 
 }
 /* ប្រអប់ Tabs (Leave/Out) */
 #main-app-container #page-history .bg-gray-200 { 
-    background-color: rgba(0, 0, 0, 0.2) !important; /* របារខ្មៅថ្លា */
+    background-color: rgba(0, 0, 0, 0.3) !important; /* របារខ្មៅថ្លា 30% */
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
     border: 1px solid rgba(255, 255, 255, 0.1);
 }
 /* Tab ที่ Active */
 #main-app-container #page-history .history-tab.active {
-     background-color: rgba(255, 255, 255, 0.9) !important; /* ពណ៌ស ស្ទើរតែពេញ */
-     color: #1e40af !important; /* រក្សាពណ៌អក្សរ Blue */
-     text-shadow: none !important; /* ដក shadow ចេញ ពេលនៅផ្ទៃស */
+     background-color: rgba(255, 255, 255, 0.9) !important; 
+     color: #1e40af !important; 
+     /* ដក Stroke ចេញ ពេលនៅផ្ទៃស */
+     text-shadow: none !important; 
 }
 /* Tab ที่ Inactive */
 #main-app-container #page-history .history-tab {
-    color: #f1f5f9; /* ពណ៌ស ស្រាល */
+    color: #f1f5f9; 
 }
 /* ប្រអប់ Card នីមួយៗ (ដែលបង្កើតដោយ JS) */
 #main-app-container #history-content .bg-white {
-    background-color: rgba(255, 255, 255, 0.15) !important;
+    background-color: rgba(0, 0, 0, 0.2) !important;
     backdrop-filter: blur(15px);
     -webkit-backdrop-filter: blur(15px);
-    border: 1px solid rgba(255, 255, 255, 0.2) !important;
+    border: 1px solid rgba(255, 255, 255, 0.15) !important;
 }
 
 /* --- Form Pages (Leave/Out) & Approver Page --- */
 #main-app-container #page-request-leave, 
 #main-app-container #page-request-out,
 #main-app-container #page-approver {
-     background-color: transparent !important; /* Override bg-gray-50 */
+     background-color: transparent !important;
 }
-/* ប្រអប់ព័ត៌មាន User */
+/* ប្រអប់ព័ត៌មាន User & Approver Cards */
 #main-app-container #page-request-leave .bg-white,
 #main-app-container #page-request-out .bg-white,
 #main-app-container #page-approver .bg-white { 
-    background-color: rgba(255, 255, 255, 0.15) !important;
+    background-color: rgba(0, 0, 0, 0.2) !important;
     backdrop-filter: blur(15px);
     -webkit-backdrop-filter: blur(15px);
-    border: 1px solid rgba(255, 255, 255, 0.2) !important;
+    border: 1px solid rgba(255, 255, 255, 0.15) !important;
 }
 
 /* --- Inputs & Dropdowns (Scoped to Main App) --- */
 #main-app-container input[type="text"],
 #main-app-container input[type="date"],
 #main-app-container .dropdown-list {
-    background-color: rgba(0, 0, 0, 0.2) !important; /* ផ្ទៃខ្មៅ ថ្លា */
+    background-color: rgba(0, 0, 0, 0.25) !important; /* ផ្ទៃខ្មៅ ថ្លា */
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
     border: 1px solid rgba(255, 255, 255, 0.2) !important;
     color: #f1f5f9 !important; /* ពណ៌អក្សរ ពេលវាយ */
 }
-/* ពណ៌ Placeholder */
 #main-app-container input[type="text"]::placeholder { 
     color: #cbd5e1 !important;
     opacity: 1; 
 }
-/* Dropdown items */
 #main-app-container .dropdown-list .px-4.py-2 {
      background-color: transparent !important;
      color: #e2e8f0 !important;
@@ -274,7 +264,6 @@ body {
 #main-app-container .dropdown-list .px-4.py-2.hover\:bg-gray-100:hover {
      background-color: rgba(255, 255, 255, 0.1) !important;
 }
-/* Input ដែល Disabled */
 #main-app-container input:disabled {
     background-color: rgba(0, 0, 0, 0.1) !important;
     border-color: rgba(255, 255, 255, 0.1) !important;
@@ -282,7 +271,7 @@ body {
 }
 
 /* --- Modals (ផ្ទាំង Pop-up) - លើកលែង Face Scan ពេល Login --- */
-/* យើងអនុវត្តស្ទីលនេះ តែលើ Modals ខាងក្នុង App ប៉ុណ្ណោះ */
+/* (Requirement 3: ប្រអប់សារផងដែល) */
 #edit-modal .bg-white,
 #delete-modal .bg-white,
 #custom-alert-modal .bg-white,
@@ -290,10 +279,10 @@ body {
 #announcement-modal .bg-white,
 #invoice-modal .bg-white,
 #return-scan-modal .bg-white { /* នេះគឺជា Scan "ចូលវិញ" មិនមែន Login */
-    background-color: rgba(255, 255, 255, 0.4) !important; /* ថ្លា 40% */
-    backdrop-filter: blur(20px);
+    background-color: rgba(0, 0, 0, 0.3) !important; /* កញ្ចក់ខ្មៅ 30% */
+    backdrop-filter: blur(20px); /* ព្រិលជាងមុន */
     -webkit-backdrop-filter: blur(20px);
-    border: 1px solid rgba(255, 255, 255, 0.3) !important;
+    border: 1px solid rgba(255, 255, 255, 0.2) !important;
 }
 /* ផ្ទៃខាងក្រោយខ្មៅ របស់ Modal (Backdrop) - លើកលែង Face Scan ពេល Login */
 #edit-modal,
@@ -308,14 +297,14 @@ body {
 
 /* --- Bottom Navigation Bar --- */
 #bottom-navigation {
-    background-color: rgba(0, 0, 0, 0.2) !important; /* ផ្ទៃខ្មៅ ថ្លា */
+    background-color: rgba(0, 0, 0, 0.2) !important; 
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
     border-top: 1px solid rgba(255, 255, 255, 0.2) !important;
 }
 
 /* 4. កែពណ៌អក្សរ (Text Color Fixes) - Scoped to Main App */
-/* ដោយសារ BG ងងឹត, យើងត្រូវបង្ខំអក្សរភាគច្រើន ឲ្យទៅជាពណ៌ស */
+/* បង្ខំអក្សរទាំងអស់ ឲ្យទៅជាពណ៌ស */
 #main-app-container .text-gray-500, 
 #main-app-container .text-gray-600, 
 #main-app-container .text-gray-700, 
@@ -360,4 +349,4 @@ body {
      color: #dbeafe !important;
 }
 
-/* === END: NEW Frosted Glass Redesign === */
+/* === END: NEW Frosted Glass Redesign (V3) === */
