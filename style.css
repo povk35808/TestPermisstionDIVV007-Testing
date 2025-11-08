@@ -139,19 +139,22 @@ body {
     overflow: hidden; 
 }
 
+/* (ជំនួស Block នេះ) */
 #main-app-container::before {
     content: "";
     position: absolute;
     inset: 0;
     z-index: -1; 
     
-    /* រូបភាពផ្ទៃខាងក្រោយ (ច្បាស់ មិនព្រិល មិនងងឹត) */
     background-image: url('https://i.postimg.cc/FRwXZGjn/Artboard-1.png');
-    background-size: cover;
-    background-position: center;
-    background-attachment: fixed; /* ធ្វើឲ្យ BG នៅស្ងៀមពេល scroll */
     
-    /* V3: បានលុប filter: blur() និង background-color: dark ចេញ */
+    /* === START: ការផ្លាស់ប្តូរ (V4) តាមសំណើ === */
+    background-size: contain;     /* ប្តូរពី 'cover' ទៅ 'contain' */
+    background-repeat: no-repeat; /* ធានាថារូបភាពមិនច្រំដែល */
+    /* === END: ការផ្លាស់ប្តូរ (V4) === */
+    
+    background-position: center;
+    background-attachment: fixed; 
 }
 
 /* 2. ធ្វើឲ្យអក្សរងាយស្រួលអាន (Heavy Stoke) (Requirement 3) */
