@@ -358,21 +358,32 @@ body {
 
 
 
-/* === START: NEW (V4.1) Modal Text Color Fix === */
 
-/* 5. កែពណ៌អក្សរក្នុងប្រអប់សារ (Modal Text Fix) */
-/* បង្ខំអក្សរទាំងអស់ (h3, p, label) ក្នុង Modal ឲ្យទៅជាពណ៌ស */
-#edit-modal .bg-white,
-#delete-modal .bg-white,
-#custom-alert-modal .bg-white,
-#agreement-modal .bg-white,
-#announcement-modal .bg-white,
-#invoice-modal .bg-white,
-#return-scan-modal .bg-white {
+
+
+/* === START: NEW (V5) Modal Text Color Fix (Aggressive) === */
+
+/* * នេះគឺជា "catch-all" (ចាប់យកទាំងអស់) 
+ * វាបង្ខំ "គ្រប់" elements (h3, p, label, div, span)
+ * ដែលនៅ "ខាងក្នុង" ប្រអប់កញ្ចក់ថ្លា របស់ Modal ឲ្យទៅជាពណ៌ស។
+ * យើងប្រើ selector '*' (ផ្កាយ) ដើម្បីបង្ខំវាទាំងអស់។
+*/
+#edit-modal .bg-white *,
+#delete-modal .bg-white *,
+#custom-alert-modal .bg-white *,
+#agreement-modal .bg-white *,
+#announcement-modal .bg-white *,
+#invoice-modal .bg-white *,
+#return-scan-modal .bg-white * {
     color: #f8fafc !important; /* ពណ៌ស ស្រាល */
 }
 
-/* ធានាថា អក្សរ Error នៅតែក្រហមដដែល (សំខាន់) */
+/* * ជំហានទី២៖ បន្ទាប់ពីបង្ខំ "ទាំងអស់" ឲ្យទៅជាពណ៌ស, 
+ * យើងត្រូវ "អនុញ្ញាត" ឲ្យពណ៌ Error និង Success ត្រឡប់មកវិញ។
+ * (ត្រូវតែដាក់វានៅ "បន្ទាប់" ពីកូដខាងលើ)
+*/
+
+/* អនុញ្ញាតឲ្យ Error ត្រឡប់ជាពណ៌ក្រហមវិញ */
 #main-app-container .text-red-500, 
 #main-app-container .text-red-600 {
      color: #f87171 !important;
@@ -380,11 +391,25 @@ body {
      text-shadow: none !important; 
 }
 
-/* ធានាថា អក្សរ Success នៅតែបៃតងដដែល */
+/* អនុញ្ញាតឲ្យ Success ត្រឡប់ជាពណ៌បៃតងវិញ */
 #main-app-container .text-green-700, 
 #main-app-container .text-green-800,
-#main-app-container .text-green-600 { /* បន្ថែម ឲ្យគ្របដណ្តប់ */
+#main-app-container .text-green-600 {
      color: #86efac !important;
 }
 
-/* === END: NEW (V4.1) Modal Text Color Fix === */
+/* * ជំហានទី៣៖ កែសម្រួលពិសេស សម្រាប់ Invoice Modal
+ * ដើម្បីបំបែកពណ៌ Label និង Value ឲ្យបានស្អាត
+*/
+
+/* ធ្វើឲ្យ Labels (ឈ្មោះ:, អត្តលេខ:) មានពណ៌ស ស្រាល */
+#invoice-modal .text-gray-700 {
+    color: #cbd5e1 !important; /* ពណ៌ស ស្រាល (Gray-300) */
+}
+
+/* ធ្វើឲ្យ Values (ឈ្មោះពិត, IDពិត) មានពណ៌ស ច្បាស់ */
+#invoice-modal .text-gray-900 {
+    color: #ffffff !important; /* ពណ៌ស ច្បាស់ */
+}
+
+/* === END: NEW (V5) Modal Text Color Fix === */
