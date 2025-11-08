@@ -353,3 +353,38 @@ body {
 }
 
 /* === END: NEW Frosted Glass Redesign (V3) === */
+
+
+
+
+
+/* === START: NEW (V4.1) Modal Text Color Fix === */
+
+/* 5. កែពណ៌អក្សរក្នុងប្រអប់សារ (Modal Text Fix) */
+/* បង្ខំអក្សរទាំងអស់ (h3, p, label) ក្នុង Modal ឲ្យទៅជាពណ៌ស */
+#edit-modal .bg-white,
+#delete-modal .bg-white,
+#custom-alert-modal .bg-white,
+#agreement-modal .bg-white,
+#announcement-modal .bg-white,
+#invoice-modal .bg-white,
+#return-scan-modal .bg-white {
+    color: #f8fafc !important; /* ពណ៌ស ស្រាល */
+}
+
+/* ធានាថា អក្សរ Error នៅតែក្រហមដដែល (សំខាន់) */
+#main-app-container .text-red-500, 
+#main-app-container .text-red-600 {
+     color: #f87171 !important;
+     /* យើងដក Stoke ចេញពីអក្សរ Error ដើម្បីឲ្យវាកាន់តែច្បាស់ */
+     text-shadow: none !important; 
+}
+
+/* ធានាថា អក្សរ Success នៅតែបៃតងដដែល */
+#main-app-container .text-green-700, 
+#main-app-container .text-green-800,
+#main-app-container .text-green-600 { /* បន្ថែម ឲ្យគ្របដណ្តប់ */
+     color: #86efac !important;
+}
+
+/* === END: NEW (V4.1) Modal Text Color Fix === */
